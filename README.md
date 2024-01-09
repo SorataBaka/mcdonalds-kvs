@@ -1,5 +1,14 @@
 # Getting Started with Create React App
 
+## Shortcuts
+List of available shortcuts to use within program
+### `enter`
+Serves the order. Depending on if the side is on or off, when you press enter, an order will be served while another will be added to the queue.
+### `p`
+Toggles side on or off.
+### `o`
+Pushes a new order to the queue. Depending on if the side is on or off, when you press 'o', an order will not be pushed in to the queue.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

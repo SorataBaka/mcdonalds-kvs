@@ -1,45 +1,40 @@
 import "./App.css";
-import { useEffect, useState } from "react";
-import generateOrder from "./lib/generateorder";
 import SideOnSpan from "./components/sideon";
+import { actions } from "./lib/store"
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux"
 
 function App() {
-	const [averageTime, setAverageTime] = useState(120)
-	const [sideOn, setSideOn] = useState(false)
-	const [orders, setOrders] = useState([
-		generateOrder(),
-		generateOrder(),
-		generateOrder(),
-		generateOrder(),
-		generateOrder(),
-		generateOrder(),
-		generateOrder(),
-	])
-	const pushOrder = () => {
-		if (!sideOn) return
-		if (orders.length > 7) return
-		orders.push(generateOrder())
-		setOrders(orders)
-		const generatetime = Math.floor(Math.random() * (15000) + 5000);
-		
+	const sideOn = useSelector((state) => state.sideOn)
+	const orders = useSelector((state) => state.orders)
+	const averageTime = useSelector((state) => state.mfyTime)
+
+	const dispatch = useDispatch()
+
+	const toggleSide = () => {
+		dispatch(actions.toggleSide())
 	}
+	const serveOrder = () => {
+		const servedOrder = orders[0]
+		if (servedOrder === undefined) return;
+		const timeServed = (Date.now()) / 1000 - servedOrder.timeGenerated
+		dispatch(actions.setMfy(Math.floor(timeServed)))
+		dispatch(actions.serveOrder())
+		dispatch(actions.pushOrder())
+	}
+	const addOrder = () => {
+		dispatch(actions.pushOrder())
+	}
+
+
 	useEffect(() => {
-		
 		window.addEventListener("keypress", (event) => {
-			if (event.key === "p") {
-				setSideOn(current => !current);
-			}
-			if (event.key === "Enter") {
-				const currentOrder = orders[0]
-				const timeTaken = Math.floor((Date.now() / 1000)) - currentOrder.timeGenerated;
-				setAverageTime(timeTaken);
-				orders.shift()
-				setOrders(orders);
-			}
+			if (event.key === "p") toggleSide();
+			if (event.key === "Enter") serveOrder();
+			if (event.key === "o") addOrder();
 		})
 		//eslint-disable-next-line
 	}, [])
-
 	return (
 		<>
 			<div className="h-screen w-screen flex flex-col align-middle justify-between bg-black">

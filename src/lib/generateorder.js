@@ -1,42 +1,57 @@
-const FoodName = [
-	"ハンバーガー",
-	"エグチ",
-	"チーズB",
-	"DCB",
-	"アブリダブリ",
-	"ベーコントマト",
-	"チキンフィレ",
-	"エビフィレ",
-	"BLB",
-	"クリスプ",
-	"チキチー",
-	"TMB",
-	"テリCFO",
-	"スパビー",
-	"スパチキ",
-	"BIGMAC",
-	"FOF",
-];
-const OrderType = ["DT", "Bag", "Tray", "MDS"];
-const OrderStorage = ["Paid", "Stored"];
+const config = {
+	maxOrderlength: 5,
+	minOrderlength: 1,
+	singleItemMaxAmount: 4,
+	singleItemMinAmount: 1,
+	Itemlist: [
+		"ハンバーガー",
+		"エグチ",
+		"チーズB",
+		"DCB",
+		"アブリダブリ",
+		"ベーコントマト",
+		"チキンフィレ",
+		"エビフィレ",
+		"BLB",
+		"クリスプ",
+		"チキチー",
+		"TMB",
+		"テリCFO",
+		"スパビー",
+		"スパチキ",
+		"BIGMAC",
+		"FOF",
+	],
+	OrderTypes: ["DT", "Bag", "Tray", "MDS"],
+	OrderStorage: ["Paid", "Stored"],
+};
+
 function generateNumber() {
 	return Math.floor(Math.random() * (16 - 5) + 5);
 }
+
 function generateOrder() {
 	const duplicateChecker = [];
-	const orderAmount = Math.floor(Math.random() * (5 - 1) + 1);
+	const orderAmount = Math.floor(
+		Math.random() * (config.maxOrderlength - config.minOrderlength) +
+			config.minOrderlength
+	);
 	const orderArray = [];
 	for (let i = 0; i < orderAmount; i++) {
-		let ItemRandomizer = Math.floor(Math.random() * 16);
+		let ItemRandomizer = Math.floor(Math.random() * config.Itemlist.length);
 		//Prevent duplicate items
 		while (duplicateChecker.includes(ItemRandomizer)) {
-			ItemRandomizer = Math.floor(Math.random() * 16);
+			ItemRandomizer = Math.floor(Math.random() * config.Itemlist.length);
 		}
 		duplicateChecker.push(ItemRandomizer);
 
-		const singleItemAmount = Math.floor(Math.random() * (4 - 1) + 1);
+		const singleItemAmount = Math.floor(
+			Math.random() *
+				(config.singleItemMaxAmount - config.singleItemMinAmount) +
+				config.singleItemMinAmount
+		);
 		orderArray.push({
-			name: FoodName[ItemRandomizer],
+			name: config.Itemlist[ItemRandomizer],
 			amount: singleItemAmount,
 		});
 	}
@@ -47,8 +62,12 @@ function generateOrder() {
 		randomCode,
 		randomTime,
 		orderArray,
-		orderType: OrderType[Math.floor(Math.random() * 4)],
-		orderStorage: OrderStorage[Math.floor(Math.random() * 2)],
+		orderType:
+			config.OrderTypes[Math.floor(Math.random() * config.OrderTypes.length)],
+		orderStorage:
+			config.OrderStorage[
+				Math.floor(Math.random() * config.OrderStorage.length)
+			],
 	};
 }
 export default generateOrder;
