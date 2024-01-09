@@ -1,79 +1,85 @@
-# Getting Started with Create React App
+# McDonalds KVS Simulator
+
+Welcome to Mcdonalds KVS Simulator! This project is made due to my poor performance being an initiator within a few months of starting a part time job at Mcdonalds. To somewhat simulate what it would be like during a rush hour, this program is configured to keep pumping in orders no matter what. Unfortunately, i am unable to create a minigame like the one they give during training. But with imagination, this simple simulator should be more than enough to simulate and remember the recipes.
+
+This program is currently configured for the McDonalds Japan menu. If you would like to change it, see 'Configuration' below.
+
+  
+
+## WARNING
+
+THIS PROJECT IS EXPRESSLY INDEPENDENT AND HAS NO AFFILIATION, ASSOCIATION, OR ENDORSEMENT BY MCDONALD'S CORPORATION OR ANY OF ITS SUBSIDIARIES. MCDONALD'S IS NOT RESPONSIBLE FOR, AND DOES NOT ENDORSE OR SUPPORT, THIS PROJECT OR ITS CONTENTS.
+
+  
+
+## Configuration
+
+All available configurations can be done inside './lib/generateorder.js'.
+|Parameter|Explanation|Type|Default Value|
+|--|--|--|--|
+|maxOrderLength|Maximum amount of items a single order could have|Int|5|
+|mixOrderLength|Minimum amount of items a single order could have|Int|1|
+|singleItemMaxMount|Maximum amount of a single item could have in an order|Int|4|
+|singleItemMinAmount|Minimum amount of a single item could have in an order|Int|1|
+|Itemlist|List of items that can be put in queue|Array (String)|Mcdonalds Japan menu|
+|OrderTypes|Type of order (Only for display)|Array (String)|Drive Through, Bag, Tray, Delivery|
+|OrderStorage|Current order state (Only for display|Array (String)|Paid, Stored|
+
+  
+  
 
 ## Shortcuts
+
 List of available shortcuts to use within program
+
 ### `enter`
+
 Serves the order. Depending on if the side is on or off, when you press enter, an order will be served while another will be added to the queue.
+
 ### `p`
+
 Toggles side on or off.
+
 ### `o`
+
 Pushes a new order to the queue. Depending on if the side is on or off, when you press 'o', an order will not be pushed in to the queue.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  
 
 ## Available Scripts
 
+  
+
 In the project directory, you can run:
+
+  
 
 ### `npm start`
 
+  
+
 Runs the app in the development mode.\
+
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+  
+
 The page will reload when you make changes.\
+
 You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  
 
 ### `npm run build`
 
+  
+
 Builds the app for production to the `build` folder.\
+
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
+  
+
 The build is minified and the filenames include the hashes.\
+
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
